@@ -33,7 +33,7 @@ class MoviesSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Text('buildResults');
+    return buildSuggestions(context);
   }
 
   @override

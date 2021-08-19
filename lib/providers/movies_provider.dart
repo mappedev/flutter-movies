@@ -21,8 +21,6 @@ class MoviesProvider extends ChangeNotifier {
   final debouncer = Debouncer(duration: Duration(milliseconds: 500));
 
   final StreamController<List<Movie>> _suggestionsStreamController = new StreamController.broadcast();
-  Stream<List<Movie>> get suggestionStream => _suggestionsStreamController.stream;
-
 
   MoviesProvider() {
     print('MoviesProvider initialized.');
@@ -30,6 +28,8 @@ class MoviesProvider extends ChangeNotifier {
     getNowPlayingMovies();
     getPopularMovies();
   }
+
+  Stream<List<Movie>> get suggestionStream => _suggestionsStreamController.stream;
 
   Future<String> _getJsonData(String path, {String? language = 'es-ES', int? page = 1, String query = ''}) async {
     Map<String, dynamic> urlQueries = { 'api_key': _apiKey };
